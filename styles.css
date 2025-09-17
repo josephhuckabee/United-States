@@ -30,7 +30,12 @@
     font-style: normal;
   }
 
-
+  .container {
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: clamp(16px, 4vw, 32px);
+  }
+  
   img{
     max-width: 100%;
     height: auto;
@@ -46,48 +51,46 @@
   a {
     text-decoration: underline;
     color: black;
-    padding: clamp(2px, 3vw, 25px);
+    padding: 0; /* keep links from inflating bars/layout */
   }
 
   p {
     font-size: clamp(1rem, 2vw, 1.25rem);
+    font-family: "Sansation-regular", sans-serif;
   }
   
   h1 {
-    font-size: clamp(2rem, 6vw, 6rem);
-    font-family:"newsreader", serif;
+    font-size: clamp(4rem, 8vw, 8rem);
+    font-family:"Newsreader", serif;
     color: whitesmoke;
   }
 
 /* Navigation Header Grid */
 .nav_header_grid{
-    /* display: grid;
-    grid-template-columns: 1fr 2fr;
-    padding-inline: 16px; */
-}
-
-nav {
   position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
   z-index: 1200;
-  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+  justify-content: space-between; /* nav left, header right */
+
   padding: 12px 20px;
   background: #231f20;
 }
 
-header {
-  position: fixed;
-  top: 0;
-  right: 16px;
-  z-index: 1300;
+nav {
+  position: static;          
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0;                  /* spacing handled by .nav_header_grid */
   background: transparent;
-  
+  width: auto;
+}
+
+header {
+  position: static;            /* lives inside the same bar as nav*/
+  background: transparent;
 }
 header h1 {
   margin: 0;
@@ -100,7 +103,7 @@ header h1 {
 nav a {
   color: whitesmoke;
   text-decoration: none;
-
+  padding: 8px 12px;
   border-radius: 6px;
 }
 nav a:hover,
@@ -111,7 +114,7 @@ nav a:focus-visible {
 
   h2 {
     font-size: clamp(1.25rem, 3vw, 3rem);
-    font-family: "sansation-light", sans-serif;
+    font-family: "Sansation", sans-serif;
     color: whitesmoke;
     background-color: #231f20;
     border-radius: 10px;
@@ -123,7 +126,7 @@ nav a:focus-visible {
     line-height: 1.3;
     text-align: center;
     margin: 0;
-    font-family: "sansation", sans-serif;
+    font-family: "Sansation", sans-serif;
     color: whitesmoke;
     background-color: #231f20;
     border-radius: 10px;
@@ -138,9 +141,9 @@ summary {
     color: white;
     font-weight: bold;
     list-style: none;
-    appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
+    appearance: none;
     position: relative;
     padding-right: 28px;
 }
@@ -168,7 +171,6 @@ details {
 
 details[open] {
   border-radius: 10px;
-  padding: 10px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 }
 
@@ -178,20 +180,15 @@ details[open] a {
   padding: 10px 0;
 }
 
- 
-
-  
   /* Body Styling */
   body {
-    font-family: "Merriweather Sans", Arial, sans-serif;
-    color: #231f20;
+    font-family: "sansation-regular", sans-serif;
     background-color:#231f20;
-    padding-top: 56px;
+    padding-top: 0;
+    line-height: 2;
   }
   
 /* Header */
-
-
 
 .grid-container{
     display: grid;
@@ -201,6 +198,7 @@ details[open] a {
     padding: 0 16px;
     background-color: #2A6F97;
     align-items: start;
+    color: #231f20;
    
 }
 .interior-grid-container{
@@ -209,8 +207,9 @@ details[open] a {
   grid-template-rows: auto auto;
   gap: 20px;
   padding: 16px;
-  margin-top: 200px;
+  margin-top: 16px;
   background-color:white;
+  color: #231f20;
 }
 
 figcaption {
@@ -236,7 +235,7 @@ figcaption {
 
 .hero img {
   width: 100%;
-  max-height: 600px;
+  /* max-height: 600px; */
   object-fit: cover;
   display: block;
 }
@@ -251,22 +250,22 @@ section{
   margin-top: 20px;
 }
 .slideshow-container {
-  position: relative;       /* establish containing block for absolute children */
+  position: relative;      
   overflow: hidden;
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;           /* center within the content column */
-  aspect-ratio: 16 / 9;     /* consistent responsive height based on width */
-  background: #000;         /* avoids flicker/edges between images */
+  /* max-width: 1200px; */
+  margin: 0 auto;         
+  aspect-ratio: 16 / 9;     
+  background: #000;      
 }
 
 .slideshow-container img {
-  position: absolute;       /* stack images on top of each other */
-  inset: 0;                 /* top:0; right:0; bottom:0; left:0 */
-  display: none;            /* hidden by default */
+  position: absolute;       
+  inset: 0;              
+  display: none;       
   width: 100%;
   height: 100%;
-  object-fit: cover;        /* fill without distortion, crops if needed */
+  object-fit: cover;       
 }
 
 .slideshow-container img.active { display: block; }
@@ -275,7 +274,6 @@ form{
   display: flex;
   flex-direction: column;
   gap: 15px;
-
   padding: 20px;
 }
 .contact-form-container{
@@ -285,6 +283,7 @@ form{
   margin: 50px auto;
   max-width: 600px;
   text-align: center;
+  color: whitesmoke;
 }
   footer{
    align-items: center;
@@ -295,13 +294,10 @@ form{
   
   /* Responsive Media Queries */
   @media (max-width: 627px) {
+    /* Add responsive styles here or remove this block if not needed */
   }
   
   @media (min-width: 600px) and (max-width: 899px) {
-    .nav_header_grid {
-      grid-template-columns: 20% 80%;
-      padding-inline: 32px;
-    }
     .grid-container {
       grid-template-columns: 1fr 2fr;
       padding: 0 32px;
@@ -311,7 +307,7 @@ form{
       padding: 24px;
     }
     .card {
-      max-width: 50%;
+      max-width: 33.33%;
     }
     nav {
       justify-content: flex-start;
@@ -320,22 +316,18 @@ form{
   }
 
 @media (min-width: 900px) {
-  .nav_header_grid { grid-template-columns: 20% 80%; padding-inline: 50px; }
   .grid-container { grid-template-columns: 1fr 3fr; padding: 0 50px; }
   .interior-grid-container { grid-template-columns: 1.5fr 2.5fr; padding: 40px; }
   .card { max-width: 33.33%; }
 
-  .nav_header_grid,
   .grid-container,
   .interior-grid-container {
-    max-width: 1200px;
+
     margin-left: auto;
     margin-right: auto;
+
   }
 
-  .interior-grid-container { margin-top: 80px; }
-
-  .slideshow-container { max-height: 70vh; }
 }
 
 main a { color: #1d3b64; }

@@ -59,12 +59,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (form) {
     const email = document.getElementById('email');
     const confirm = document.getElementById('confirm-email');
-    form.addEventListener('submit', (e) => {
-      if (email && confirm && email.value.trim() !== confirm.value.trim()) {
-        e.preventDefault();
-        alert('Emails do not match.');
-        confirm.focus();
-      }
-    });
+    if (email && confirm) {
+      form.addEventListener('submit', (e) => {
+        if (email.value.trim() !== confirm.value.trim()) {
+          e.preventDefault();
+          alert('Emails do not match.');
+          confirm.focus();
+        }
+      });
+    }
   }
 });
